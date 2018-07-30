@@ -57,9 +57,11 @@ namespace SolutionInspector.Model.Persistence
         {
             var all = root.Descendants(root.Name.Namespace + "Compile")
                           .Concat(root.Descendants(root.Name.Namespace + "Content")
-                          .Concat(root.Descendants(root.Name.Namespace + "None")));
+                          .Concat(root.Descendants(root.Name.Namespace + "None")
+                          .Concat(root.Descendants(root.Name.Namespace + "ClInclude")
+              )));
 
-            return all.Select(element => element.Attribute("Include").Value);
+            return all.Select(element => element.Attribute("Include")?.Value).Where(x => x != null);
         }
 
         private static IEnumerable<string> GetImports(XElement root)
