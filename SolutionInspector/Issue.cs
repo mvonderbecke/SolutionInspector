@@ -10,6 +10,8 @@ namespace SolutionInspector
 
         public const string MissingRequiredImport = "SC202";
 
+        public const string DuplicateFileDetected = "SC203";
+
         public const string ProjectVsFileNameMismatch = "SC301";
 
         public const string ProjectNamePrefixMismatch = "SC302";

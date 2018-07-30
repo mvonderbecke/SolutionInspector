@@ -10,6 +10,7 @@ namespace SolutionInspector.Rules
         {
             yield return new SolutionFormatVersionRule();
             yield return new DetectMissingFilesRule();
+            yield return new DetectDuplicateFilesRule();
             yield return new ProjectNameIsFileNameRule();
             yield return new ProjectNamePrefixRule();
             yield return new RequiredImports();

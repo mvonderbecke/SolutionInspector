@@ -12,9 +12,11 @@ namespace SolutionInspector.Settings.Persistence
         public static ISolutionSettings Read(string settingsFile, XElement element)
         {
             bool? detectMissingFiles = Utils.ReadOptionalFlag(settingsFile, element, "DetectMissingFiles");
+            bool? detectDuplicateFiles = Utils.ReadOptionalFlag(settingsFile, element, "DetectDuplicateFiles");
             bool? projectNameIsFileName = Utils.ReadOptionalFlag(settingsFile, element, "ProjectNameIsFileName");
 
             IEnumerable<string> ignoredProjects = Utils.ReadOptionalList(settingsFile, element, "IgnoredProjects");
+            IEnumerable<string> ignoredDuplicateFiles = Utils.ReadOptionalList(settingsFile, element, "IgnoredDuplicateFiles");
 
             Version maxSolutionFormatVersion = ReadOptionalVersion(settingsFile, element, "MaxSolutionFormatVersion");
             Version minSolutionFormatVersion = ReadOptionalVersion(settingsFile, element, "MinSolutionFormatVersion");
@@ -31,9 +33,12 @@ namespace SolutionInspector.Settings.Persistence
                 maxSolutionFormatVersion,
                 minSolutionFormatVersion,
                 detectMissingFiles,
+                detectDuplicateFiles,
                 projectNamePattern == null ? null : projectNamePattern.Value,
                 projectNameIsFileName,
-                ignoredProjects);
+                ignoredProjects,
+                ignoredDuplicateFiles
+                );
         }
 
         private static Version ReadOptionalVersion(string settingsFile, XElement root, string name)

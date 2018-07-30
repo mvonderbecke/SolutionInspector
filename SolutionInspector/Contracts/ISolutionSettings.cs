@@ -11,10 +11,14 @@ namespace SolutionInspector.Contracts
 
         bool? DetectMissingFiles { get; }
 
+        bool? DetectDuplicateFiles { get; }
+
         string ProjectNamePrefix { get; }
 
         bool? ProjectNameIsFileName { get; }
 
         IEnumerable<string> IgnoredProjects { get; }
+
+        IEnumerable<string> IgnoredDuplicateFiles { get; }
     }
 }

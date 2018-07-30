@@ -6,6 +6,8 @@ namespace SolutionInspector.Contracts
     {
         bool? DetectMissingFiles { get; }
 
+        bool? DetectDuplicateFiles { get; }
+
         bool? AllowBuildEvents { get; }
 
         bool? AssemblyNameIsProjectName { get; }
@@ -13,7 +15,9 @@ namespace SolutionInspector.Contracts
         bool? RootNamespaceIsAssemblyName { get; }
 
         IEnumerable<string> RequiredImports { get; }
-            
+
+        IEnumerable<string> IgnoredDuplicateFiles { get; }
+
         IEnumerable<IProjectProperty> Properties { get; }
     }
 }

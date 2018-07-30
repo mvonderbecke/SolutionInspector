@@ -148,6 +148,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rules\AllowBuildEventsRule.cs" />
     <Compile Include="Rules\AssemblyNameIsProjectNameRule.cs" />
+    <Compile Include="Rules\DetectDuplicateFilesRule.cs" />
     <Compile Include="Rules\DetectMissingFilesRule.cs" />
     <Compile Include="Rules\ProjectNameIsFileNameRule.cs" />
     <Compile Include="Rules\ProjectNamePrefixRule.cs" />
