@@ -11,20 +11,23 @@ namespace SolutionInspector.Settings.Persistence
         public static IProjectSettings Read(string settingsFile, XElement element)
         {
             bool? detectMissingFiles = Utils.ReadOptionalFlag(settingsFile, element, "DetectMissingFiles");
+            bool? detectDuplicateFiles = Utils.ReadOptionalFlag(settingsFile, element, "DetectDuplicateFiles");
             bool? allowBuildEvents = Utils.ReadOptionalFlag(settingsFile, element, "AllowBuildEvents");
             bool? assemblyNameIsProjectName = Utils.ReadOptionalFlag(settingsFile, element, "AssemblyNameIsProjectName");
             bool? rootNamespaceIsAssemblyName = Utils.ReadOptionalFlag(settingsFile, element, "RootNamespaceIsAssemblyName");
 
+            IEnumerable<string> ignoredDuplicateFiles = Utils.ReadOptionalList(settingsFile, element, "IgnoredDuplicateFiles");
             IEnumerable<string> requiredImports = Utils.ReadOptionalList(settingsFile, element, "RequiredImports");
-
             IEnumerable<IProjectProperty> properties = ReadOptionalProperties(settingsFile, element);
 
             return new ProjectSettings(
                 detectMissingFiles,
+                detectDuplicateFiles,
                 allowBuildEvents,
                 assemblyNameIsProjectName,
                 rootNamespaceIsAssemblyName,
                 requiredImports,
+                ignoredDuplicateFiles,
                 properties);
         }
 
