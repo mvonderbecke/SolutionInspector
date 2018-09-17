@@ -61,7 +61,13 @@ namespace SolutionInspector.Model.Persistence
                           .Concat(root.Descendants(root.Name.Namespace + "ClInclude")
               )));
 
-            return all.Select(element => element.Attribute("Include")?.Value).Where(x => x != null);
+            return all.Select(element =>
+                              {
+                                  if (element.Attribute("Include") != null)
+                                      return element.Attribute("Include").Value;
+                                  else
+                                      return null;
+                              }).Where(x => x != null);
         }
 
         private static IEnumerable<string> GetImports(XElement root)
