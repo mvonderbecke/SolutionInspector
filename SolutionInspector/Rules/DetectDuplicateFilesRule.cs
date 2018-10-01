@@ -17,9 +17,9 @@ namespace SolutionInspector.Rules
             {
                 foreach (string file in solution.Settings.IgnoredDuplicateFiles)
                 {
-                    ignoredDuplicates += file;
-                    System.Console.WriteLine("Ignored duplicate files from SolutionInspector.xml are: " + ignoredDuplicates);
+                    ignoredDuplicates += file + System.Environment.NewLine;
                 }
+                System.Console.WriteLine("Ignored duplicate files from SolutionInspector.xml are: " + System.Environment.NewLine + ignoredDuplicates);
             }
             else
             {
