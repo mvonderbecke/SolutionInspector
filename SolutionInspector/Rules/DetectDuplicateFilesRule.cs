@@ -53,7 +53,7 @@ namespace SolutionInspector.Rules
             try
             {
                 var duplicateNames = from filePath in files
-                                     let fileName = Path.GetFileName(filePath)
+                                     let fileName = Path.GetFullPath(filePath)
                                      group filePath by fileName into filesFound
                                      where filesFound.Count() > 1 && !ignoredDuplicates.Contains(filesFound.Key)
                                      select filesFound;
